@@ -1,3 +1,10 @@
+<?php
+include_once("controllers/Feedback_controller.php");
+
+if (isset($_POST["feedback"])) {
+    createFeedback($_POST['nama'],$_POST['email'],$_POST['message']);
+}
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
@@ -39,7 +46,7 @@
                     <div class="nav-inner">
                         <!-- Start Navbar -->
                         <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="index.html">
+                            <a class="navbar-brand" href="index.php">
 
                                 <!-- GAMBAR GANTI SINI -->
                                 <img src="assets/images/logo/logo.png" alt="Logo">
@@ -101,7 +108,12 @@
                             <!-- <a href="javascript:void(0)" class="btn"><i class="lni lni-apple"></i> App Store</a>
                             <a href="javascript:void(0)" class="btn btn-alt"><i class="lni lni-play-store"></i> Google
                                 Play</a> -->
-                            <a href="download.html" class="btn btn-alt"></i> Download Now</a>
+                                <form action="download.php" method="POST">
+                                <input type="hidden" value="download" name="download">
+                                <div class="button add-list-button">
+                                    <button type="submit" class="btn">Download now</a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -235,12 +247,12 @@
                
                 <div>
                     <div>
-                      <form class="form" method="post" action="assets/mail/mail.php">
+                      <form class="form" method="post" action="#">
                         <h3 style="color:white;">Kasihlah Feedback Kalian!</h3>
                         <br>
                         <div class="row">
                             <label for="name"><h4 style="color:white;">Nama</h4></label>
-                            <input class="feedback_input" name="name" type="text" placeholder="Nama Anda" required="required"/>
+                            <input class="feedback_input" name="nama" type="text" placeholder="Nama Anda" required="required"/>
                         </div>
 
                         <div class="row">
@@ -250,10 +262,11 @@
 
                         <div class="row">
                             <label for="isi"><h4 style="color:white;">Feedback</h4></label>
-                            <textarea class="feedback_input" name="isi" required="required" rows="4" cols="50" placeholder="Isi"></textarea>                                
+                            <textarea class="feedback_input" name="message" required="required" rows="4" cols="50" placeholder="Isi"></textarea>                                
                         </div>
 
                         <div class="row">
+                            <input type="hidden" name="feedback" value="feedback">
                             <button type="submit" class="special_btn">Submit Message</button>
                         </div>
                       </form>

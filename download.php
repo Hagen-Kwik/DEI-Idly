@@ -1,3 +1,10 @@
+<?php
+include_once("controllers/Click_controller.php");
+
+if (isset($_POST["download"])) {
+    updateClick();
+}
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
@@ -38,7 +45,7 @@
                         <div class="nav-inner">
                             <!-- Start Navbar -->
                             <nav class="navbar navbar-expand-lg">
-                                <a class="navbar-brand" href="index.html">
+                                <a class="navbar-brand" href="index.php">
                                     <img src="assets/images/logo/logo.png" alt="Logo">
                                 </a>
                                 <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
@@ -51,20 +58,23 @@
                                 <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                     <ul id="nav" class="navbar-nav ms-auto">
                                         <li class="nav-item">
-                                            <a href="index.html" aria-label="Toggle navigation">Home</a>
+                                            <a href="index.php" aria-label="Toggle navigation">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="index.html" aria-label="Toggle navigation">Features</a>
+                                            <a href="index.php" aria-label="Toggle navigation">Features</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="index.html" aria-label="Toggle navigation">Overview</a>
+                                            <a href="index.php" aria-label="Toggle navigation">Overview</a>
                                         </li>
                                     </ul>
                                 </div> <!-- navbar collapse -->
 
-                                <div class="button add-list-button">
-                                    <a href="download.html" class="btn">Download now</a>
-                                </div>
+                                <form action="download.php" method="POST">
+                                    <input type="hidden" value="download" name="download">
+                                    <div class="button add-list-button">
+                                        <button type="submit" class="btn">Download now</a>
+                                    </div>
+                                </form>
                             </nav>
                             <!-- End Navbar -->
                         </div>
@@ -123,17 +133,16 @@
 
                                 <div class="col-lg-6 col-md-7 col-12">
                                     <div class="form">
-                                        <form action="#" method="get" class="newsletter-form">
+                                        <form action="Thanks.php" method="POST" class="newsletter-form">
                                             <div class="container">
-                                                <div class="row" style="padding: 10px;">
-                                                  <div class="col-lg-8 col-12">
-                                                    <input class="apply" name="EMAIL" placeholder="Your email address" type="email">
+                                            <div class="row" style="padding: 10px;">
+                                                    <div class="col-lg-8 col-12">
+                                                    <input class="apply" name="email" placeholder="Your email address" type="email">
                                                 </div>
                                                 <div class="col-lg-4 col-12">
-                                                    <!-- A HREF SILAHKAN GANTI SESUAI -->
-                                                   <!-- <button class="apply-button">Apply</span></button> -->
-                                                   <a href="Thanks.html">THanks</a>
+                                                    <button type="submit" class="apply-button">Apply</span></button>
                                                 </div>
+                                                <input type="hidden" value="applyforbeta" name="applyforbeta">
                                             </div>
                                         </form>
                                     </div>

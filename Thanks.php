@@ -1,3 +1,11 @@
+<?php
+    include_once("controllers/Click_controller.php");
+    include_once("controllers/Betatest_controller.php");
+
+    if (isset($_POST["applyforbeta"])) {
+        createBetaUser($_POST['email']);
+    }
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
@@ -38,7 +46,7 @@
                         <div class="nav-inner">
                             <!-- Start Navbar -->
                             <nav class="navbar navbar-expand-lg">
-                                <a class="navbar-brand" href="index.html">
+                                <a class="navbar-brand" href="index.php">
                                     <img src="assets/images/logo/logo.png" alt="Logo">
                                 </a>
                                 <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
@@ -51,20 +59,23 @@
                                 <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                     <ul id="nav" class="navbar-nav ms-auto">
                                         <li class="nav-item">
-                                            <a href="index.html" aria-label="Toggle navigation">Home</a>
+                                            <a href="index.php" aria-label="Toggle navigation">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="index.html" aria-label="Toggle navigation">Features</a>
+                                            <a href="index.php" aria-label="Toggle navigation">Features</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="index.html" aria-label="Toggle navigation">Overview</a>
+                                            <a href="index.php" aria-label="Toggle navigation">Overview</a>
                                         </li>
                                     </ul>
                                 </div> <!-- navbar collapse -->
 
-                                <div class="button add-list-button">
-                                    <a href="download.html" class="btn">Download now</a>
-                                </div>
+                                <form action="download.php" method="POST">
+                                    <input type="hidden" value="download" name="download">
+                                    <div class="button add-list-button">
+                                        <button type="submit" class="btn">Download now</a>
+                                    </div>
+                                </form>
                             </nav>
                             <!-- End Navbar -->
                         </div>
@@ -83,8 +94,9 @@
                         <!-- FEEL FREE TO DELETE THE H4 IS ELEK -->
                         <h4 style="color:white; padding: 20px;">Please Check Your Email for our newest update thanks!</h4>
                         <!-- Ganti navigation sesuai kemauan -->
-                        <button class="thanks">Go Back to Home</button>
-                        <a href="index.html">GO BACK</a>
+                        <a href="index.php"><button class="thanks">GO BACK to home</button></a>
+                        <!-- <button class="thanks">GO BACK to home</button>
+                        <a href="index.html">GO BACK</a> -->
                     </div>
                 </div>
             </div>
