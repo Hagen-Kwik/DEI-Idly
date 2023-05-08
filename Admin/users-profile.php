@@ -1,3 +1,29 @@
+<?php
+session_start();
+include_once("../controllers/User_controller.php");
+
+if ($_SESSION["role"] !== "admin") {
+  header("Location: pages-login.php");
+}
+
+if (isset($_POST["signout"])) {
+  session_destroy();
+  header("Location: pages-login.php");
+}
+
+if (isset($_POST["editusername"])) {
+  updateusername($_SESSION['id'],$_POST['username']);
+  $_SESSION['username'] = $_POST['username'];
+}
+
+if (isset($_POST["editpassword"])) {
+  if($_POST['password'] == $_SESSION['password'] && $_POST['newpassword'] == $_POST['renewpassword']){
+    updatepassword($_SESSION['id'], $_POST['newpassword']);
+    $_SESSION['password'] = $_POST['newpassword'];
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +69,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div>
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/logo/logo.png" alt="">
         <span class="d-none d-lg-block">Idly</span>
       </a>
@@ -51,7 +77,7 @@
 
     <!-- dashboard -->
     <div style="margin-left: 20px;">
-      <a href="index.html">
+      <a href="index.php">
         <span class="d-none d-lg-block">Dashboard</span>
       </a>
     </div><!-- End Logo -->
@@ -63,13 +89,13 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2"><?=$_SESSION['username']?></span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
+              <h6><?=$_SESSION['username']?></h6>
               <span>Admin</span>
             </li>
 
@@ -78,7 +104,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -88,10 +114,11 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-login.html">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
+              <form action="#" method="post" class="dropdown-item d-flex align-items-center">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <input type="hidden" name="signout" value="signout">
+                  <button type="submit" class="btn">Sign Out</button>
+              </form>
             </li>
 
           </ul><!-- End Profile Dropdown Items -->
@@ -109,7 +136,7 @@
       <h1>Profile</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
           <li class="breadcrumb-item active">Profile</li>
         </ol>
       </nav>
@@ -166,29 +193,29 @@
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                   <!-- Profile Edit Form -->
-                  <form>
+                  <form action="#" method="post">
                    
                     <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                        <input name="username" type="text" class="form-control" id="fullName" value="<?=$_SESSION['username']?>">
                       </div>
                     </div>
 
-                    <div class="row mb-3">
+                    <!-- <div class="row mb-3">
                       <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
                       <div class="col-md-8 col-lg-9">
                         <textarea name="about" class="form-control" id="about" style="height: 100px">This is the Admin Account for Idly to the Max.</textarea>
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="row mb-3">
                       <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="company" type="text" class="form-control" id="company" value="Idly to the Max">
+                        <input name="company" type="text" class="form-control" id="company" value="Idly to the Max" disabled>
                       </div>
                     </div>
-
+                    <input type="hidden" value="editusername" name="editusername">
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
@@ -198,7 +225,7 @@
 
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
-                  <form>
+                  <form action="#" method="post">
 
                     <div class="row mb-3">
                       <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
@@ -220,6 +247,7 @@
                         <input name="renewpassword" type="password" class="form-control" id="renewPassword">
                       </div>
                     </div>
+                    <input type="hidden" value="editpassword" name="editpassword">
 
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Change Password</button>

@@ -1,3 +1,10 @@
+<?php
+include_once("../controllers/User_controller.php");
+
+if (isset($_POST["login"])) {
+    login($_POST['username'], $_POST['password']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +58,7 @@
               <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                 <div class="d-flex justify-content-center py-4">
-                  <a href="index.html" class="logo d-flex align-items-center w-auto">
+                  <a href="index.php" class="logo d-flex align-items-center w-auto">
                     <img src="assets/logo/logo.png" alt="">
                     <span class="d-none d-lg-block">Idly to the Max</span>
                   </a>
@@ -66,7 +73,7 @@
                       <p class="text-center small">Enter your username & password to login</p>
                     </div>
 
-                    <form class="row g-3 needs-validation" novalidate>
+                    <form class="row g-3 needs-validation" novalidate action="#" method="post">
 
                       <div class="col-12">
                         <label for="yourUsername" class="form-label">Username</label>
@@ -82,7 +89,7 @@
                         <input type="password" name="password" class="form-control" id="yourPassword" required>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
-
+                      <input type="hidden" value="login" name="login">
                       <div class="col-12">
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
@@ -91,13 +98,13 @@
                       </div>
                       <div class="col-12">
                         <!-- A HREF NYA DIHAPUS NANTI KLO SUDAH ADA LOGIC DAN UNCOMMENT BUTTON CLASS-->
-                        <a href="index.html">
-                         Login
-                          <!-- <button class="btn btn-primary w-100" type="submit">Login</button> -->
+                        <!-- <a href="index.html">
+                         Login -->
+                          <button class="btn btn-primary w-100" type="submit">Login</button>
                         </a>
                       </div>
                       <div class="col-12">
-                        <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a>
+                        <p class="small mb-0">Don't have account? <a href="pages-register.php">Create an account</a>
                         </p>
                       </div>
                     </form>
