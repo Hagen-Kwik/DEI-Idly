@@ -119,7 +119,7 @@ if (isset($_POST["feedback"])) {
                 </div>
                 <div class="col-lg-7 col-md-12 col-12">
                     <div class="hero-image wow fadeInRight" data-wow-delay=".4s">
-                        <img src="assets/images/hero/phone.png" alt="#">
+                        <img src="assets/images/header_image.png" alt="#">
                     </div>
                 </div>
             </div>
@@ -140,11 +140,11 @@ if (isset($_POST["feedback"])) {
                     <div class="row">
                         
                         <div class="col-lg-6">
-                            <img src="assets/images/logo/logo.png" alt="">
+                            <img src="assets/images/Idly_V1.png" alt="">
                         </div>
 
                         <div class="col-lg-6">
-                            <p>SELAMAT MENGISI DAN GANTI GAMBAR</p>
+                            <p>Juragan Es krim adalah game berbasis mobile  dimaan user akan diberi pengalaman untuk menjalankan bisnis eskrimnya sendiri. User akan bisa mengupgrade peralatan di tokonya dan juga mempercantik visual dari tokonya. Mekanik pvp ada di dalam game ini dalam bentuk trade war. User bisa perang harga dengan toko eskrim milik user lain dimana user akan mendapatkan pelanggan dari toko lain jika menang. Disini user juga akan diberikan opsi untuk memperluas bisnis eskrimnya dengan membuka cabang di kota-kota yang lain. Unutk memperlengkap sistem pvp, kita menyediakan sistem ranking dimana user akan bisa melihat siapa toko yang menghasilkan paling banyak uang</p>
                         </div>
                     
                     </div>
@@ -188,32 +188,6 @@ if (isset($_POST["feedback"])) {
                         <h3>Mudah Untuk dipahami</h3>
                         <p>It is a long established fact that a reader will be distracted by the readable content of a
                             page at its layout.</p>
-                    </div>
-                    <!-- End Single Feature -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Feature -->
-                    <div class="single-feature wow fadeInUp" data-wow-delay=".2s" style="text-align: center;">
-                        <h3>Advanced Security</h3>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a
-                            page at its layout.</p>
-                    </div>
-                    <!-- End Single Feature -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Feature -->
-                    <div class="single-feature wow fadeInUp" data-wow-delay=".4s" style="text-align: center;">
-                        <h3>Powerful API</h3>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a
-                            page at its layout.</p>
-                    </div>
-                    <!-- End Single Feature -->
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Start Single Feature -->
-                    <div class="single-feature wow fadeInUp" data-wow-delay=".6s" style="text-align: center;">
-                        <h3>Ekspansi Bisnis</h3>
-                        <p>Jika bisnis di satu tempat sudah sukses bukalah cabang baru dan mulai lagi</p>
                     </div>
                     <!-- End Single Feature -->
                 </div>
